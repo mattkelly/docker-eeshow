@@ -10,7 +10,10 @@ RUN apt-get update && \
         imagemagick \
         bsdmainutils
 
-RUN git clone http://neo900.org/git/eeshow
+RUN git clone --single-branch \
+            --branch develop/v5-libraries \
+            https://github.com/pcbops/eeshow.git
+
 RUN cd eeshow && make && make install
 
 ENTRYPOINT ["eeplot"]
